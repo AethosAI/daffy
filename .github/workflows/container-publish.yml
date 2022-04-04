@@ -18,7 +18,7 @@ name: Build the daffy container
 on:
   push:
     branches:
-      - 'develop'
+      - 'pre-release_testing'
 
 jobs:
   build:

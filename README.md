@@ -52,6 +52,10 @@ In the following example a user would connect to their instance of Label Studio 
 
 `--download_resources, -dr`: Download additional resources [images, config] **Caution:** This option is not currently working in our testing.
 
+#### Formats:
+
+See [Formats](formats.json) for a list of all available formats, their export name and descriptions.
+
 ## Contributing
 
 Thanks for considering, we need your contributions to help this project come to fruition.

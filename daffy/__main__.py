@@ -43,6 +43,13 @@ def main():
     help="If you would like to unzip the output file [supported for certain export types]",
 )
 @click.option(
+    "--out_path",
+    "-o",
+    required=True,
+    type=click.Path(),
+    help="Download additional resources",
+)
+@click.option(
     "--export_type",
     "-e",
     required=True,
@@ -74,6 +81,7 @@ def export(
     token,
     project_id,
     export_type,
+    out_path,
     unzip,
     download_all_tasks,
     download_resources,
@@ -83,6 +91,7 @@ def export(
         token,
         project_id,
         export_type,
+        out_path
         unzip=unzip,
         download_all_tasks=download_all_tasks,
         download_resources=download_resources,

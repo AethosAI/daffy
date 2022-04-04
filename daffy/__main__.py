@@ -77,7 +77,6 @@ def export(
     unzip,
     download_all_tasks,
     download_resources,
-    ids,
 ):
     export_command.run(
         host_path,
@@ -87,7 +86,6 @@ def export(
         unzip=unzip,
         download_all_tasks=download_all_tasks,
         download_resources=download_resources,
-        ids=ids,
     )
 
 

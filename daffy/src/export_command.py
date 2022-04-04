@@ -25,6 +25,8 @@ logging.basicConfig(
 )
 
 ZIP_NAME = "requests.zip"
+ZIP_EXPORT_TYPES = ["VOC", "COCO", "YOLO"]
+JSON_EXPORT_TYPES = ["JSON", "JSON_MIN"]
 
 
 def unzip_file():
@@ -39,12 +41,13 @@ def export(
     token,
     project_id,
     export_type,
+    filename=ZIP_NAME,
     download_all_tasks=False,
     download_resources=False,
     ids="",
 ):
 
-    logging.info("Exporting Files...")
+    logging.info("Exporting Files into the {} format...".format(export_type))
 
     token_string = "Token {}".format(token)
 
@@ -65,7 +68,7 @@ def export(
         headers=headers,
     )
 
-    with open(ZIP_NAME, "wb+") as file:
+    with open(filename, "wb+") as file:
         file.write(response.content)
 
     logging.info("Export Complete!")
@@ -84,17 +87,34 @@ def run(
     ids="",
 ):
 
+    if export_type in JSON_EXPORT_TYPES:
+        logging.info("Setting output file to JSON...")
+        filename = "requests.json"
+    elif export_type == "CSV":
+        logging.info("Setting output file to CSV...")
+        filename = "requests.csv"
+    elif export_type == "TSV":
+        logging.info("Setting output file to TSV...")
+        filename = "requests.tsv"
+    elif export_type in ZIP_EXPORT_TYPES:
+        filename = ZIP_NAME
+        logging.info("Setting output file to ZIP...")
+
     _ = export(
         host_path,
         token,
         project_id,
         export_type,
+        filename=filename,
         download_all_tasks=download_all_tasks,
         download_resources=download_resources,
         ids=ids,
     )
 
-    if unzip:
-        unzip_file()
+    if export_type in ZIP_EXPORT_TYPES:
+        if unzip:
+            unzip_file()
+        else:
+            logging.info("Skipping Unzip...")
 
     pass

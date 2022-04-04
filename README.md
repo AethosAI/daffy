@@ -32,7 +32,7 @@ For help:
 
 ```daffy export --help```
 
-In the following example a user would connect to their instance of Label Studio using their host path and API token [link]. They are then specifying the project id and the VOC export type (VOC being used generally for Tensorflow object detection projects):
+In the following example a user would connect to their instance of Label Studio using their host path and API token _You can find your user token on the User Account page in Label Studio_. They are then specifying the project id and the VOC export type (VOC being used generally for Tensorflow object detection projects):
 
 ```daffy export -h http(s)://path:port -t [api_token] -p [project_id] -e VOC```
 

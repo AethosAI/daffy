@@ -32,7 +32,7 @@ JSON_EXPORT_TYPES = ["JSON", "JSON_MIN"]
 def unzip_file(path):
     logging.info("Unzipping File...")
     with zipfile.ZipFile(path + "/" + ZIP_NAME, "r") as zip_ref:
-        zip_ref.extractall()
+        zip_ref.extractall(path)
     logging.info("Unzip done!")
 
 
@@ -118,7 +118,7 @@ def run(
 
     if export_type in ZIP_EXPORT_TYPES:
         if unzip:
-            unzip_file(out_path + "/" + ZIP_NAME)
+            unzip_file(out_path)
         else:
             logging.info("Skipping Unzip...")
 

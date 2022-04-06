@@ -118,7 +118,7 @@ def run(
 
     if export_type in ZIP_EXPORT_TYPES:
         if unzip:
-            unzip_file(out_path)
+            unzip_file(out_path + "/" + ZIP_NAME)
         else:
             logging.info("Skipping Unzip...")
 

@@ -47,7 +47,7 @@ def main():
     "-o",
     required=True,
     type=click.Path(),
-    help="Download additional resources",
+    help="Output path of the exported sample files based export method used.",
 )
 @click.option(
     "--export_type",

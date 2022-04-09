@@ -30,6 +30,7 @@ JSON_EXPORT_TYPES = ["JSON", "JSON_MIN"]
 
 
 def unzip_file(path):
+    logging.info("Unzip Path: {}".format(path + "/" + ZIP_NAME))
     logging.info("Unzipping File...")
     with zipfile.ZipFile(path + "/" + ZIP_NAME, "r") as zip_ref:
         zip_ref.extractall(path)

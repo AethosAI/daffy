@@ -14,8 +14,9 @@
 #   limitations under the License.
 ######################################################
 
+from email.policy import default
 import click
-from daffy.src import export_command
+from daffy.src import export_command, get_details_command
 
 
 @click.group()
@@ -24,10 +25,7 @@ def main():
 
 
 @click.option(
-    "--download_resources",
-    "-dr",
-    is_flag=True,
-    help="Download additional resources",
+    "--download_resources", "-dr", is_flag=True, help="Download additional resources",
 )
 @click.option(
     "--download_all_tasks",
@@ -64,10 +62,7 @@ def main():
     help="Project ID with data you would like to export.",
 )
 @click.option(
-    "--token",
-    "-t",
-    required=True,
-    help="Label Studio authorization token",
+    "--token", "-t", required=True, help="Label Studio authorization token",
 )
 @click.option(
     "--host_path",
@@ -95,6 +90,42 @@ def export(
         unzip=unzip,
         download_all_tasks=download_all_tasks,
         download_resources=download_resources,
+    )
+
+
+@click.option(
+    "--print_out", "-p", is_flag=True, default=True, help="Prints results to console."
+)
+@click.option(
+    "--raw",
+    "-r",
+    is_flag=True,
+    default=False,
+    help="Print/Save JSON without any formatting, prints all retrieved data.",
+)
+@click.option(
+    "--out_path",
+    "-o",
+    type=click.Path(),
+    help="Output directory path for details.json file.",
+)
+@click.option(
+    "--token", "-t", required=True, help="Label Studio authorization token",
+)
+@click.option(
+    "--host_path",
+    "-h",
+    required=True,
+    help="Path to the host machine running Label Studio [http(s)://path:port]",
+)
+@main.command()
+def details(host_path, token, output_path, raw, print_out):
+    get_details_command.run(
+        host_path=host_path,
+        token=token,
+        output=output_path,
+        raw=raw,
+        print_out=print_out,
     )
 
 

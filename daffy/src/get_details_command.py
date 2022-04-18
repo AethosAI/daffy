@@ -28,6 +28,15 @@ OUT_FILE_NAME = "details.json"
 
 
 def format_details(content, raw=False):
+    """Format the retrieved Label Studio instance details for easier reading.
+
+    Args:
+        content (dict): Content retrieved from API call to be formatted.
+        raw (bool, optional): Skip all formatting and return a JSON of all raw information. Defaults to False.
+
+    Returns:
+        String: JSON as String to be saved or printed.
+    """
     # Decoding and Converting to JSON
     content = json.loads(content.decode("utf-8"))
 
@@ -38,6 +47,7 @@ def format_details(content, raw=False):
 
     logging.info("Formatting Content...")
     results = []
+    # Grab each result and append to the results list.
     for i in content["results"]:
         keys = ["id", "title", "description", "created_by"]
         simple_dict = {x: i[x] for x in keys}
@@ -64,9 +74,21 @@ def save_file(output, results):
 
 
 def get_details(url, headers):
+    """Run the API command.
+
+    Args:
+        url (string): URL for API call
+        headers (dict): Headers for authorization
+
+    Returns:
+        JSON: Retrieved Label Studio instance details from API call.
+    """
 
     logging.info("Connecting and Retrieving Data...")
-    response = requests.get(url, headers=headers,)
+    response = requests.get(
+        url,
+        headers=headers,
+    )
 
     return response.content
 
@@ -83,10 +105,12 @@ def run(host_path, token, output=None, raw=False, print_out=True):
     # Format the details as defined
     results = format_details(details, raw)
 
+    # Print to console
     if print_out:
         logging.info(results)
         logging.info("Done!")
 
+    # Save to file
     if output is not None:
         save_file(output, results)
 

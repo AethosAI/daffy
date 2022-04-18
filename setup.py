@@ -29,17 +29,19 @@ with open(path.join(HERE, "requirements.txt"), encoding="utf-8") as f:
 install_requires = [
     x.strip()
     for x in all_reqs
-    if ("git+" not in x) and (not x.startswith("#")) and (not x.startswith("-"))
+    if ("git+" not in x)
+    and (not x.startswith("#"))
+    and (not x.startswith("-"))
 ]
-dependency_links = [x.strip().replace("git+", "") for x in all_reqs if "git+" not in x]
+dependency_links = [
+    x.strip().replace("git+", "") for x in all_reqs if "git+" not in x
+]
 
 setup(
     name="daffy",
-    description="Tool to allow container based training and prediction of Machine Learning Models.",
+    description="Daffy is a CLI tool meant to provide annotation export capabilities outside of Label Studio.",
     include_package_data=True,
-    package_data={
-        "": ["*.txt"],
-    },
+    package_data={"": ["*.txt"]},
     version="0.0.2",
     packages=find_packages(),  # list of all packages
     install_requires=install_requires,

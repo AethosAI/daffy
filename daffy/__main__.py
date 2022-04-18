@@ -21,11 +21,15 @@ from daffy.src import export_command, get_details_command
 
 @click.group()
 def main():
+    """Daffy is a CLI tool meant to provide annotation export capabilities outside of Label Studio."""
     pass
 
 
 @click.option(
-    "--download_resources", "-dr", is_flag=True, help="Download additional resources",
+    "--download_resources",
+    "-dr",
+    is_flag=True,
+    help="Download additional resources",
 )
 @click.option(
     "--download_all_tasks",
@@ -62,7 +66,10 @@ def main():
     help="Project ID with data you would like to export.",
 )
 @click.option(
-    "--token", "-t", required=True, help="Label Studio authorization token",
+    "--token",
+    "-t",
+    required=True,
+    help="Label Studio authorization token",
 )
 @click.option(
     "--host_path",
@@ -81,6 +88,7 @@ def export(
     download_all_tasks,
     download_resources,
 ):
+    """Export annotations to a desired format"""
     export_command.run(
         host_path,
         token,
@@ -94,7 +102,11 @@ def export(
 
 
 @click.option(
-    "--print_out", "-p", is_flag=True, default=True, help="Prints results to console."
+    "--print_out",
+    "-p",
+    is_flag=True,
+    default=True,
+    help="Prints results to console.",
 )
 @click.option(
     "--raw",
@@ -110,7 +122,10 @@ def export(
     help="Output directory path for details.json file.",
 )
 @click.option(
-    "--token", "-t", required=True, help="Label Studio authorization token",
+    "--token",
+    "-t",
+    required=True,
+    help="Label Studio authorization token",
 )
 @click.option(
     "--host_path",
@@ -120,6 +135,7 @@ def export(
 )
 @main.command()
 def details(host_path, token, output_path, raw, print_out):
+    """Retrieve details of the Label Studio instance"""
     get_details_command.run(
         host_path=host_path,
         token=token,

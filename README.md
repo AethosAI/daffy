@@ -3,7 +3,7 @@
 ## Summary
 Daffy is a CLI tool meant to provide annotation export capabilities for Label Studio outside of the tool. The user can specify their desired export format (see list below) and download annotations or download all available "tasks". Daffy was created primarily to operate inside of Pachyderm as a containerized tool for a pipeline step (see below). 
 
-Read our article for more information on our setup with Pachyderm: _link_
+Read our blog post for more information: _link_
 
 ### Installation
 

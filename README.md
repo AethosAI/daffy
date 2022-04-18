@@ -34,7 +34,9 @@ For help:
 
 In the following example a user would connect to their instance of Label Studio using their host path and API token _You can find your user token on the User Account page in Label Studio_. They are then specifying the project id and the VOC export type (VOC being used generally for Tensorflow object detection projects):
 
-```daffy export -h http(s)://path:port -t [api_token] -p [project_id] -e VOC```
+```
+daffy export -h http(s)://path:port -t [api_token] -p [project_id] -e VOC
+```
 
 #### Options:
 
@@ -42,7 +44,7 @@ In the following example a user would connect to their instance of Label Studio 
 
 `--token, -t`: Label Studio Authorization Token
 
-`--project_id, -p`: Project ID with annotations you would like to export
+`--project_id, -p`: Project ID with annotations you would like to export, _see details command to get project details_
 
 `--export_type, -e`: Export type you would like to use [see list]
 
@@ -55,6 +57,26 @@ In the following example a user would connect to their instance of Label Studio 
 #### Formats:
 
 See [Formats](formats.json) for a list of all available formats, their export name and descriptions.
+
+### Command: Details
+
+```daffy details [options]```
+
+For help:
+
+```daffy details --help```
+
+#### Options:
+
+`--host_path, -h`: Path to the host machine running Label Studio [http(s)://path:port]
+
+`--token, -t`: Label Studio Authorization Token
+
+`--output_path, -o`: Output directory path for details.json file
+
+`--raw, -r`: Print/Save JSON without any formatting, prints all retrieved data
+
+`--print_out, -p`: Prints results to console
 
 ## Contributing
 

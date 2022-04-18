@@ -29,10 +29,11 @@ ZIP_EXPORT_TYPES = ["VOC", "COCO", "YOLO"]
 JSON_EXPORT_TYPES = ["JSON", "JSON_MIN"]
 
 
-def unzip_file():
+def unzip_file(path):
+    logging.info("Unzip Path: {}".format(path + "/" + ZIP_NAME))
     logging.info("Unzipping File...")
-    with zipfile.ZipFile(ZIP_NAME, "r") as zip_ref:
-        zip_ref.extractall()
+    with zipfile.ZipFile(path + "/" + ZIP_NAME, "r") as zip_ref:
+        zip_ref.extractall(path)
     logging.info("Unzip done!")
 
 
@@ -41,6 +42,7 @@ def export(
     token,
     project_id,
     export_type,
+    out_path,
     filename=ZIP_NAME,
     download_all_tasks=False,
     download_resources=False,
@@ -68,7 +70,9 @@ def export(
         headers=headers,
     )
 
-    with open(filename, "wb+") as file:
+    filepath = out_path + "/" + filename
+
+    with open(filepath, "wb+") as file:
         file.write(response.content)
 
     logging.info("Export Complete!")
@@ -81,6 +85,7 @@ def run(
     token,
     project_id,
     export_type,
+    out_path,
     unzip=True,
     download_all_tasks=False,
     download_resources=False,
@@ -105,6 +110,7 @@ def run(
         token,
         project_id,
         export_type,
+        out_path,
         filename=filename,
         download_all_tasks=download_all_tasks,
         download_resources=download_resources,
@@ -113,7 +119,7 @@ def run(
 
     if export_type in ZIP_EXPORT_TYPES:
         if unzip:
-            unzip_file()
+            unzip_file(out_path)
         else:
             logging.info("Skipping Unzip...")
 

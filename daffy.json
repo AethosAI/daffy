@@ -1,0 +1,24 @@
+{
+    "pipeline": {
+        "name": "Label_Converter"
+    },
+    "description": "A pipeline that downloads and converts data from Label Studio.",
+    "transform": {
+        "image_pull_secrets": [
+            "[secret]"
+        ],
+        "cmd": [
+            "sh"
+        ],
+        "stdin": [
+            "daffy export -h [label studio hostname] -t [label studio auth token] -p [project number] -e [desired format] -o /pfs/out"
+        ],
+        "image": "ghcr.io/rutheferd/daffy:584f6818ca426b76a42c9b5a50d535db14853417"
+    },
+    "input": {
+        "pfs": {
+            "glob": "/",
+            "repo": "[input repo]"
+        }
+    }
+}

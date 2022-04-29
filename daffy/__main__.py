@@ -20,6 +20,8 @@ from daffy.src import export_command, get_details_command
 
 
 @click.group()
+@click.pass_context
+@click.version_option()
 def main():
     """Daffy is a CLI tool meant to provide annotation export capabilities outside of Label Studio."""
     pass

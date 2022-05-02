@@ -40,12 +40,13 @@ dependency_links = [
 setup(
     name="daffy",
     description="Daffy is a CLI tool meant to provide annotation export capabilities outside of Label Studio.",
+    py_modules=["daffy"],
     include_package_data=True,
     package_data={"": ["*.txt"]},
     version="0.0.2",
     packages=find_packages(),  # list of all packages
     install_requires=install_requires,
-    python_requires=">=3.10",  # any python greater than 2.7
+    python_requires=">=3.9",  # any python greater than 2.7
     entry_points="""
         [console_scripts]
         daffy=daffy.__main__:main
@@ -61,6 +62,6 @@ setup(
     author_email="aruth3@gatech.edu",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.9",
     ],
 )

@@ -3,7 +3,7 @@
 ## Summary
 Daffy is a CLI tool meant to provide annotation export capabilities for Label Studio outside of the tool. The user can specify their desired export format (see list below) and download annotations or download all available "tasks". Daffy was created primarily to operate inside of Pachyderm as a containerized tool for a pipeline step (see below). 
 
-Read our blog post for more information: _link_
+Read our blog post for more information: https://aethosai.github.io/blog/strengthen/
 
 ### Installation
 
@@ -15,7 +15,7 @@ It is **suggested** to simply use the latest release of the container using Dock
 #### Python
 Daffy can also be installed locally as a python CLI tool:
 
-```python setup.py install```
+```pip install .```
 
 ## Usage
 Daffy was built using Click for a better CLI user experience. Each "argument" is defined as an option for ease of use, but note that some of the options are required (see Options below).

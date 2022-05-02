@@ -20,6 +20,7 @@ from daffy.src import export_command, get_details_command
 
 
 @click.group()
+@click.version_option()
 def main():
     """Daffy is a CLI tool meant to provide annotation export capabilities outside of Label Studio."""
     pass
@@ -116,7 +117,7 @@ def export(
     help="Print/Save JSON without any formatting, prints all retrieved data.",
 )
 @click.option(
-    "--out_path",
+    "--output_path",
     "-o",
     type=click.Path(),
     help="Output directory path for details.json file.",
